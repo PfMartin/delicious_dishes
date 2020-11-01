@@ -1,7 +1,6 @@
 # Delicious Dishes - The Vegan Cookbook
 
-# Database
-## Recipe table
+## Database - Recipe Table
 - Name
 - Picture
 - Preparation time
@@ -14,7 +13,7 @@
 - Source
 - Link
 
-# Layout
+## Layout
 - Search Bar
 - Category Search
 
