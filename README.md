@@ -9,7 +9,7 @@
     * Either list or 1 column for each ingredient
 - List of steps for preparation (Ordered list)
     * Either list or 1 column for each step
-- Category
+- Category (main, dessert, breakfast, drinks)
 - Source
 - Link
 
@@ -22,3 +22,10 @@
 - PostgreSQL
 - react.js
 - node.js
+
+## Color Codes
+- dark1: #2E1114
+- dark2: #501B1D
+- medium: #64485C
+- light1: #83677B
+- light2: #ADADAD
