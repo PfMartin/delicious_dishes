@@ -7,6 +7,8 @@ import Footer from './components/Footer.js';
 import RecipeList from './components/RecipeList.js';
 import AddRecipe from './components/AddRecipe.js';
 
+const style = require('./style.js')
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -27,9 +29,11 @@ class App extends React.Component {
 
     return(
       <Fragment>
-        <CategoryBar />
-        {site}
-        <Footer />
+      <div style={style.backgroundStyle}>
+          <CategoryBar />
+          {site}
+          <Footer />
+        </div>
       </Fragment>
     )
   }

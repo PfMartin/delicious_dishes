@@ -7,6 +7,10 @@ const light2 = '#ADADAD';
 const white = '#fff';
 
 const style = {
+  backgroundStyle: {
+    background: dark1,
+  },
+
   categoryBar: {
     display: 'flex',
     padding: '0.5rem',
@@ -14,6 +18,25 @@ const style = {
     color: white,
     alignItems: 'center',
     justifyContent: 'space-between'
+  },
+
+  containerStyle: {
+    margin: '1rem',
+    background: white,
+    border: `solid 1px ${accent}`,
+    borderRadius: '0.25rem'
+  },
+
+  formStyle: {
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    textAlign: 'center',
+  },
+
+  labelStyle: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginTop: '0.5rem'
   },
 
   recipeList: {
