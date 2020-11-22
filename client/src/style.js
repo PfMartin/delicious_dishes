@@ -36,7 +36,7 @@ const style = {
   labelStyle: {
     display: 'flex',
     flexDirection: 'column',
-    marginTop: '0.5rem'
+    margin: '0.5rem 2rem 0 2rem'
   },
 
   recipeList: {

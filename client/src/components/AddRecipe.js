@@ -27,22 +27,13 @@ class AddRecipe extends React.Component {
             </label>
             <label style={style.labelStyle}>
               Category
-              <label>
-                Main
-                <input type='radio' name='category' value='main'/>
-              </label>
-              <label>
-                Breakfast
-                <input type='radio' name='category' value='breakfast'/>
-              </label>
-              <label>
-                Dessert
-                <input type='radio' name='category' value='dessert'/>
-              </label>
-              <label>
-                Drinks
-                <input type='radio' name='category' value='drinks'/>
-              </label>
+              <select name='category'>
+                <option value='' disabled selected>Select a Category</option>
+                <option value='breakfast'>Breakfast</option>
+                <option value='dessert'>Dessert</option>
+                <option value='drinks'>Drinks</option>
+                <option value='main'>Main</option>
+              </select>
             </label>
             <label style={style.labelStyle}>
               Source
