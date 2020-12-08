@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 
+const style = require('../style.js');
+
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -17,14 +19,19 @@ class SearchBar extends React.Component {
     console.log(this.state);
   }
 
-
   render() {
     return(
       <Fragment>
-        <form>
-          <label htmlFor='search'>Suche</label>
-          <input type='text' name='search' onChange={this.handleChange}/>
-        </form>
+        <div style={style.header}>
+          <form >
+            <label style={{color: '#fff'}}>
+              Search&nbsp;
+              <input type='text'/>
+            </label>
+
+          </form>
+          <p style={style.btnDark} onClick={this.props.handleNav}>Navigation</p>
+        </div>
       </Fragment>
     )
   }
