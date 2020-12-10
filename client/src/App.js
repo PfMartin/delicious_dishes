@@ -19,17 +19,36 @@ class App extends React.Component {
     };
   }
 
+
   handleNav = () => {
     this.setState(prevState => ({
       navigation: !prevState.navigation,
     }));
   }
 
+  navToAddRecipe = () => {
+    this.setState(prevState => ({
+      site: 'AddRecipe',
+      navigation: !prevState.navigation,
+    }));
+
+    console.log(this.state);
+  }
+
+  navToRecipeList = () => {
+    this.setState(prevState => ({
+      site: 'RecipeList',
+      navigation: !prevState.navigation,
+    }))
+
+    console.log(this.state);
+  }
+
   render() {
 
     return(
       <Fragment>
-        {this.state.navigation === true ? <NavBar /> : ''}
+        {this.state.navigation === true ? <NavBar navToAddRecipe={this.navToAddRecipe} navToRecipeList={this.navToRecipeList}/> : ''}
         <Header handleNav={this.handleNav}/>
         {this.state.site === 'AddRecipe' ? <AddRecipe /> : <RecipeList />}
         <Footer />

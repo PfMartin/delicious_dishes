@@ -14,8 +14,16 @@ class NavBar extends React.Component {
       <Fragment>
         <ul style={style.navContainer}>
         Functions
-        <li style={style.btnDark}>Add a Recipe</li>
-        <li style={style.btnDark}>Show all Recipes</li>
+        <li
+          style={style.btnDark}
+          onClick={this.props.navToAddRecipe}
+          >Add a Recipe
+        </li>
+        <li
+          style={style.btnDark}
+          onClick={this.props.navToRecipeList}
+        >
+          Show all Recipes</li>
         Categories
         <li style={style.btnLight}>Breakfast</li>
         <li style={style.btnLight}>Mains</li>
