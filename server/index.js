@@ -4,6 +4,10 @@ const app = express();
 
 const cors = require('cors');
 
+const database = require('./db.js');
+const addRecipe = database.addRecipe;
+const getRecipe = database.getRecipe;
+
 //Middleware
 app.use(cors());
 app.use(express.json()); //for req.body
@@ -21,7 +25,14 @@ app.get('/', async(req, res) => {
 
 app.post('/addRecipe', async(req, res) => {
   try {
-    res.send('<h1>Recipe has been added</h1>')
+    const { title, prepTime, servings, category, source, link, ingredients, prepSteps } = await req.body;
+
+    await addRecipe(title, prepTime, servings, category, source, link, ingredients, prepSteps);
+
+    console.log(title, prepTime, servings, category, source, link, ingredients, prepSteps);
+
+    res.send('Success');
+    console.log(`Website has been added: ${req.body}`);
   } catch(err) {
     console.error(err.message);
   }
