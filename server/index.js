@@ -38,6 +38,15 @@ app.post('/addRecipe', async(req, res) => {
   }
 })
 
+app.get('/getRecipe', async(req,res) => {
+  try{
+    const recipes = await getRecipe();
+    res.json(recipes);
+  } catch(err) {
+    console.error(err.message);
+  }
+})
+
 const port = 5000;
 
 app.listen(port, () => {

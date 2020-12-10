@@ -15,7 +15,7 @@ const addRecipe = (title, prepTime, servings, category, source, link, ingredient
 const getRecipe = async () => {
   const recipes = await pool.query('SELECT * FROM recipes;');
   // const recipes = await pool.query('SELECT * FROM websites WHERE category = $1', [category]);
-  const rows = await website.rows[0];
+  const rows = await recipes.rows;
 
   return rows;
 }
