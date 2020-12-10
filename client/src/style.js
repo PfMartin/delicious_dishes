@@ -71,7 +71,7 @@ const style = {
   },
 
   containerStyle: {
-    margin: '1rem',
+    margin: '0.5rem 1rem 2.5rem 1rem',
     width: '300px',
     background: colors.white,
     borderRadius: '0.25rem',
@@ -95,21 +95,25 @@ const style = {
   **********************/
   recipeList: {
     display: 'grid',
+    minHeight: '100vh',
     gridTemplateColumns: '1fr 1fr',
-    rowGap: '1rem',
-    columnGap: '1rem',
-    margin: '1rem'
+    rowGap: '.5rem',
+    columnGap: '0.5rem',
+    margin: '0.5rem'
   },
 
   listItem: {
     padding: '1rem',
-    border: `1px solid ${colors.accent}`
   },
 
   /**********************
   Footer style
   **********************/
   footer: {
+    position: 'fixed',
+    left: 0,
+    bottom: 0,
+    width: '100vw',
     color: colors.white,
     background: colors.grey,
     textAlign: 'center',

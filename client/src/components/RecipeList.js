@@ -5,44 +5,46 @@ const style = require('../style.js');
 class RecipeList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      recipes: []
+    };
+  }
 
+//Fetch recipes from the database when the component is mounted
+  componentDidMount = async(e) => {
+    try {
+      const response = await fetch('http://localhost:5000/getRecipe', {
+        method: 'GET',
+        header: { 'Content-Type': 'application/json' }
+      });
+
+      const data = await response.json();
+
+      this.setState({
+        recipes: data
+      })
+
+      console.log(this.state);
+
+    } catch(err) {
+      console.error(err.message);
+    }
   }
 
   render() {
+    //Map through the list of recipes
     return(
       <Fragment>
         <div style={style.recipeList}>
-          <div style={style.listItem}>
-            <h3>Recipe 1</h3>
-            <p>Category</p>
-            <p>Short Description</p>
-          </div>
-          <div style={style.listItem}>
-            <h3>Recipe 2</h3>
-            <p>Category</p>
-            <p>Short Description</p>
-          </div>
-          <div style={style.listItem}>
-            <h3>Recipe 3</h3>
-            <p>Category</p>
-            <p>Short Description</p>
-          </div>
-          <div style={style.listItem}>
-            <h3>Recipe 4</h3>
-            <p>Category</p>
-            <p>Short Description</p>
-          </div>
-          <div style={style.listItem}>
-            <h3>Recipe 5</h3>
-            <p>Category</p>
-            <p>Short Description</p>
-          </div>
-          <div style={style.listItem}>
-            <h3>Recipe 6</h3>
-            <p>Category</p>
-            <p>Short Description</p>
-          </div>
+          {this.state.recipes.map((item) => {
+            return(
+              <div style={style.listItem}>
+                <h3>{item.title}</h3>
+                <p>{item.category}</p>
+                <p>Time: {item.preptime}</p>
+              </div>
+            )
+          })}
         </div>
       </Fragment>
     )
