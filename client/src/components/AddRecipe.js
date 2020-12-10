@@ -5,7 +5,39 @@ const style = require('../style.js');
 class AddRecipe extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      title: '',
+      prepTime: '',
+      servings: '',
+      category: '',
+      source: '',
+      link: '',
+      ingredients: '',
+      prepSteps: ''
+    };
+  }
+
+  setValue = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  addRecipe = async(e) => {
+    e.preventDefault();
+    try{
+      const response = await fetch('http://localhost:5000/addRecipe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(this.state)
+      });
+
+      window.location = '/';
+      console.log(response);
+      console.log(this.state);
+    } catch(err) {
+      console.error(err.message);
+    }
   }
 
   render() {
@@ -13,22 +45,43 @@ class AddRecipe extends React.Component {
       <Fragment>
         <div style={style.backgroundStyle}>
           <div style={style.containerStyle}>
-            <form style={style.formStyle}>
+            <form
+              onSubmit={this.addRecipe}
+              style={style.formStyle}>
               <label style={style.labelStyle}>
                 Title
-                <input type='text' name='title'/>
+                <input
+                  type='text'
+                  name='title'
+                  value={this.state.title}
+                  onChange={this.setValue}
+                />
               </label>
               <label style={style.labelStyle}>
                 Preparation Time
-                <input type='text' name='prepTime'/>
+                <input
+                  type='number'
+                  name='prepTime'
+                  value={this.state.prepTime}
+                  onChange={this.setValue}
+                />
               </label>
               <label style={style.labelStyle}>
                 Servings
-                <input type='text' name='servings'/>
+                <input
+                  type='number'
+                  name='servings'
+                  value={this.state.servings}
+                  onChange={this.setValue}
+                />
               </label>
               <label style={style.labelStyle}>
                 Category
-                <select name='category'>
+                <select
+                  name='category'
+                  value={this.state.category}
+                  onChange={this.setValue}
+                >
                   <option value='' disabled selected>Select a Category</option>
                   <option value='breakfast'>Breakfast</option>
                   <option value='dessert'>Dessert</option>
@@ -38,23 +91,43 @@ class AddRecipe extends React.Component {
               </label>
               <label style={style.labelStyle}>
                 Source
-                <input type='text' name='source'/>
+                <input
+                  type='text'
+                  name='source'
+                  value={this.state.source}
+                  onChange={this.setValue}
+                />
               </label>
               <label style={style.labelStyle}>
                 Link
-                <input type='text' name='link'/>
+                <input
+                  type='text'
+                  name='link'
+                  value={this.state.link}
+                  onChange={this.setValue}
+                />
               </label>
               <label style={style.labelStyle}>
                 Ingredients
-                <input type='text' name='source'/>
+                <input
+                  type='text'
+                  name='ingredients'
+                  value={this.state.ingredients}
+                  onChange={this.setValue}
+                />
               </label>
               <label style={style.labelStyle}>
                 Preparation Steps
-                <input type='text' name='prepSteps'/>
+                <input
+                  type='text'
+                  name='prepSteps'
+                  value={this.state.prepSteps}
+                  onChange={this.setValue}
+                />
               </label>
-              <p style={style.btnLight}>
+              <button style={style.btnLight}>
                 Add Recipe
-              </p>
+              </button>
             </form>
           </div>
         </div>
