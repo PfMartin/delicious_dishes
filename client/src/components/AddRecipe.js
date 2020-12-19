@@ -26,7 +26,7 @@ class AddRecipe extends React.Component {
   addRecipe = async(e) => {
     e.preventDefault();
     try{
-      const response = await fetch('http://localhost:5000/addRecipe', {
+      const response = await fetch('http://192.168.178.26:5000/addRecipe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(this.state)

@@ -48,7 +48,8 @@ app.get('/getRecipe', async(req,res) => {
 })
 
 const port = 5000;
+const host = '192.168.178.26';
 
-app.listen(port, () => {
-  console.log(`Server has started on port ${port}`)
+app.listen(port, host, () => {
+  console.log(`Server has started on ${host}:${port}`)
 });
