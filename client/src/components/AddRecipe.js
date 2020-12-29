@@ -83,6 +83,7 @@ class AddRecipe extends React.Component {
                   onChange={this.setValue}
                 >
                   <option value='' disabled selected>Select a Category</option>
+                  <option value='basics'>Basics</option>
                   <option value='breakfast'>Breakfast</option>
                   <option value='dessert'>Dessert</option>
                   <option value='drinks'>Drinks</option>
