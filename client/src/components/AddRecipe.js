@@ -109,8 +109,12 @@ class AddRecipe extends React.Component {
               </label>
               <label style={style.labelStyle}>
                 Ingredients
-                <input
-                  type='text'
+                <textarea
+                  style={{
+                    resize: 'none'
+                  }}
+                  cols='20'
+                  rows='5'
                   name='ingredients'
                   value={this.state.ingredients}
                   onChange={this.setValue}
@@ -118,7 +122,12 @@ class AddRecipe extends React.Component {
               </label>
               <label style={style.labelStyle}>
                 Preparation Steps
-                <input
+                <textarea
+                  style={{
+                    resize: 'none',
+                  }}
+                  cols='20'
+                  rows='5'
                   type='text'
                   name='prepSteps'
                   value={this.state.prepSteps}
