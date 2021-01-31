@@ -19,7 +19,7 @@ const addRecipe = (title, prepTime, servings, category, source, link, ingredient
 const getRecipes = async () => {
   const allRecipes = await pool.query('SELECT * FROM recipes ORDER BY t_stamp DESC;');
   // const recipes = await pool.query('SELECT * FROM websites WHERE category = $1', [category]);
-  const rows = await all.Recipes.rows;
+  const rows = await allRecipes.rows;
 
   return rows;
 }
