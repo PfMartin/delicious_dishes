@@ -14,7 +14,7 @@ class RecipeList extends React.Component {
   }
 
 //Fetch recipes from the database when the component is mounted
-  onGetRecipes = async(e) => {
+  componentDidMount = async(e) => {
     try {
       const response = await fetch(`http://${this.server}:5000/getRecipes`);
 
@@ -32,15 +32,20 @@ class RecipeList extends React.Component {
   }
 
   render() {
+
+    const line = {
+      borderBottom: 'solid #000 1px'
+    }
+
     return(
       <Fragment>
-        <button onClick={this.onGetRecipes}>Get Recipes</button>
         {
           //Map through the list of recipes
           this.state.allRecipes.map((element) => {
             return(
               <div
                 key={element.id}
+                style={{margin: '1rem'}}
                 >
                 <ul>
                   <li>{element.title}</li>
@@ -52,6 +57,7 @@ class RecipeList extends React.Component {
                   <li>{element.ingredients}</li>
                   <li>{element.prepsteps}</li>
                 </ul>
+                <div style={line}></div>
               </div>
             )
           })
