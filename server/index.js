@@ -40,8 +40,9 @@ app.post('/addRecipe', async(req, res) => {
 
 app.get('/getRecipes', async(req,res) => {
   try{
-    const recipes = await getRecipes();
-    res.json(recipes);
+    const allRecipes = await getRecipes();
+
+    res.json(allRecipes.rows);
   } catch(err) {
     console.error(err.message);
   }

@@ -6,7 +6,7 @@ class RecipeList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipes: []
+      allRecipes: []
     };
 
     // this.server = 'localhost';
@@ -24,7 +24,7 @@ class RecipeList extends React.Component {
       const data = await response.json();
 
       this.setState({
-        recipes: data
+        allRecipes: data
       })
 
       console.log(this.state);
