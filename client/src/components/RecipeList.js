@@ -14,31 +14,48 @@ class RecipeList extends React.Component {
   }
 
 //Fetch recipes from the database when the component is mounted
-  componentDidMount = async(e) => {
+  onGetRecipes = async(e) => {
     try {
-      const response = await fetch(`http://${this.server}:5000/getRecipes`, {
-        method: 'GET',
-        header: { 'Content-Type': 'application/json' }
-      });
+      const response = await fetch(`http://${this.server}:5000/getRecipes`);
 
-      const data = await response.json();
+      const jsonData = await response.json();
 
       this.setState({
-        allRecipes: data
+        allRecipes: jsonData
       })
 
       console.log(this.state.allRecipes);
 
     } catch(err) {
-      console.error(err.message);
+      console.error(err);
     }
   }
 
   render() {
-    //Map through the list of recipes
     return(
       <Fragment>
-        <h1>Hello</h1>
+        <button onClick={this.onGetRecipes}>Get Recipes</button>
+        {
+          //Map through the list of recipes
+          this.state.allRecipes.map((element) => {
+            return(
+              <div
+                key={element.id}
+                >
+                <ul>
+                  <li>{element.title}</li>
+                  <li>{element.preptime}</li>
+                  <li>{element.servings}</li>
+                  <li>{element.category}</li>
+                  <li>{element.source}</li>
+                  <li>{element.link}</li>
+                  <li>{element.ingredients}</li>
+                  <li>{element.prepsteps}</li>
+                </ul>
+              </div>
+            )
+          })
+        }
       </Fragment>
     )
   }
