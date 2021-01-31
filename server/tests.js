@@ -1,6 +1,6 @@
-const ts = new Date();
-const timeMs = ts.getTime() / 1000;
+const dataBaseFunctions = require('./db.js');
+const getRecipes = dataBaseFunctions.getRecipes;
 
-const t_stamp = Math.round(timeMs);
+const allRecipes = getRecipes();
 
-console.log(t_stamp)
+console.log(allRecipes);
