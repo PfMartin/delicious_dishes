@@ -1,6 +1,9 @@
 const dataBaseFunctions = require('./db.js');
 const getRecipes = dataBaseFunctions.getRecipes;
 
-const allRecipes = getRecipes();
+const getRecs = async() => {
+  const allRecipes = await getRecipes();
+  console.log(allRecipes);
+}
 
-console.log(allRecipes);
+getRecs();
