@@ -27,7 +27,7 @@ class RecipeList extends React.Component {
         allRecipes: data
       })
 
-      console.log(this.state);
+      console.log(this.state.allRecipes);
 
     } catch(err) {
       console.error(err.message);
@@ -38,17 +38,7 @@ class RecipeList extends React.Component {
     //Map through the list of recipes
     return(
       <Fragment>
-        <div style={style.recipeList}>
-          {this.state.recipes.map((item) => {
-            return(
-              <div style={style.listItem}>
-                <h3>{item.title}</h3>
-                <p>{item.category}</p>
-                <p>Time: {item.preptime}</p>
-              </div>
-            )
-          })}
-        </div>
+        <h1>Hello</h1>
       </Fragment>
     )
   }
