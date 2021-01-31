@@ -6,7 +6,7 @@ const cors = require('cors');
 
 const database = require('./db.js');
 const addRecipe = database.addRecipe;
-const getRecipe = database.getRecipe;
+const getRecipes = database.getRecipes;
 
 //Middleware
 app.use(cors());
@@ -38,9 +38,9 @@ app.post('/addRecipe', async(req, res) => {
   }
 })
 
-app.get('/getRecipe', async(req,res) => {
+app.get('/getRecipes', async(req,res) => {
   try{
-    const recipes = await getRecipe();
+    const recipes = await getRecipes();
     res.json(recipes);
   } catch(err) {
     console.error(err.message);
@@ -48,7 +48,9 @@ app.get('/getRecipe', async(req,res) => {
 })
 
 const port = 5000;
-const host = '192.168.178.26';
+// const host = '192.168.178.26'; //Pi
+const host = 'localhost';
+
 
 app.listen(port, host, () => {
   console.log(`Server has started on ${host}:${port}`)

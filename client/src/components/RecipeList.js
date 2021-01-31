@@ -8,12 +8,15 @@ class RecipeList extends React.Component {
     this.state = {
       recipes: []
     };
+
+    // this.server = 'localhost';
+    this.server = '192.168.178.26'; // Pi
   }
 
 //Fetch recipes from the database when the component is mounted
   componentDidMount = async(e) => {
     try {
-      const response = await fetch('http://localhost:5000/getRecipe', {
+      const response = await fetch(`http://${this.server}:5000/getRecipes`, {
         method: 'GET',
         header: { 'Content-Type': 'application/json' }
       });

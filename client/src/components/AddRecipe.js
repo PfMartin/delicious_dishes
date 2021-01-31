@@ -15,6 +15,9 @@ class AddRecipe extends React.Component {
       ingredients: '',
       prepSteps: ''
     };
+
+    // this.server = 'localhost';
+    this.server = '192.168.178.26'; //Pi
   }
 
   setValue = (e) => {
@@ -26,7 +29,7 @@ class AddRecipe extends React.Component {
   addRecipe = async(e) => {
     e.preventDefault();
     try{
-      const response = await fetch('http://192.168.178.26:5000/addRecipe', {
+      const response = await fetch(`http://${this.server}:5000/addRecipe`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(this.state)
