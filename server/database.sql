@@ -2,6 +2,7 @@ CREATE DATABASE delicious_dishes;
 
 CREATE TABLE recipes (
   id SERIAL PRIMARY KEY,
+  t_stamp TIMESTAMP,
   title VARCHAR(64),
   prepTime INTEGER,
   servings INTEGER,
@@ -14,6 +15,6 @@ CREATE TABLE recipes (
 
 /*Test Data*/
 INSERT INTO recipes
-  (title, prepTime, servings, category, source, link, ingredients, prepSteps)
+  (t_stamp, title, prepTime, servings, category, source, link, ingredients, prepSteps)
 VALUES
-  ('test_title', 5, 4, 'test_category', 'test_source', 'test_link', 'test_ingredients', 'test_prepSteps');
+  ('test_stamp','test_title', 5, 4, 'test_category', 'test_source', 'test_link', 'test_ingredients', 'test_prepSteps');
