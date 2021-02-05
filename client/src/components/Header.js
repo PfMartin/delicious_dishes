@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-const style = require('../style.js');
+import NavBar from './NavBar.js';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -16,21 +16,31 @@ class SearchBar extends React.Component {
     await this.setState({
       search: e.target.value
     })
+  }
+
+  onSubmitSearch = (e) => {
+    e.preventDefault();
     console.log(this.state);
   }
 
   render() {
     return(
       <Fragment>
-        <div style={style.header}>
+        <div className='header'>
+          <div>Image</div>
+          <NavBar />
           <form >
-            <label style={{color: '#fff'}}>
-              Search&nbsp;
-              <input type='text'/>
-            </label>
-
+            <input
+              type='text'
+              name='search'
+              value={this.state.search}
+              onChange={this.handleChange}
+            />
+            <button
+              className='btn'
+              onClick={this.onSubmitSearch}
+            >Submit</button>
           </form>
-          <p style={style.btnDark} onClick={this.props.handleNav}>Navigation</p>
         </div>
       </Fragment>
     )

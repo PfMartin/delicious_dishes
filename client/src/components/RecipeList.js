@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react';
 
-const style = require('../style.js');
-
 class RecipeList extends React.Component {
   constructor(props) {
     super(props);
@@ -57,7 +55,7 @@ class RecipeList extends React.Component {
                   <li>{element.ingredients}</li>
                   <li>{element.prepsteps}</li>
                 </ul>
-                <div style={line}></div>
+                <div className='line'></div>
               </div>
             )
           })

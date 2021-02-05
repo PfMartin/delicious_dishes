@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react';
 
-const style = require('../style.js');
-
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
@@ -12,23 +10,10 @@ class NavBar extends React.Component {
 
     return(
       <Fragment>
-        <ul style={style.navContainer}>
-        Functions
-        <li
-          style={style.btnDark}
-          onClick={this.props.navToAddRecipe}
-          >Add a Recipe
-        </li>
-        <li
-          style={style.btnDark}
-          onClick={this.props.navToRecipeList}
-        >
-          Show all Recipes</li>
-        Categories
-        <li style={style.btnLight}>Breakfast</li>
-        <li style={style.btnLight}>Mains</li>
-        <li style={style.btnLight}>Desserts</li>
-        <li style={style.btnLight}>Drinks</li>
+        <ul className='navBar'>
+          <li>Add Recipe</li>
+          <li>Display Recipes</li>
+          <li>Edit Recipe</li>
         </ul>
       </Fragment>
     )

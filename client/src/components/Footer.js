@@ -1,6 +1,4 @@
 import React, { Fragment } from 'react';
-const style = require('../style.js');
-
 
 class Footer extends React.Component {
   constructor(props) {
@@ -11,7 +9,7 @@ class Footer extends React.Component {
   render() {
     return(
       <Fragment>
-        <div style={style.footer}>
+        <div>
           <p>&copy; Martin Pfatrisch</p>
         </div>
       </Fragment>

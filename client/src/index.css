@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+:root {
+  --dark1: #2E1114;
+  --accent: #501B1D;
+  --medium: #64485C;
+  --light1: #83677B;
+  --light2: #ADADAD;
+
+  --white: #fff;
+  --black: #000;
+  --grey: #333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+
+}
+
+ul {
+  list-style: none;
+}
+
+.btn {
+  border: 1px var(--medium) solid;
+  background: var(--accent);
+}
+
+.header {
+  font-family: 'Dancing Script', cursive;
+  padding: 1rem 0;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  text-align: center;
+  background: var(--light2);
+}
+
+.header.form {
+}
+
+.header form input {
+  width: 100px;
+  border: 1px solid var(--grey);
+  border-radius: 2px;
+  padding: 0.2rem;
+}
+
+.header form input:focus {
+  border: 1px solid var(--accent);
+}
+
+.header form button {
+  width: 40px;
+  margin-left: 2px;
+}
+
+/* Navbar */
+.navBar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.navBar li {
+  margin: 0 0.5rem;
+  padding: 0.5rem;
+  background: var(--accent);
+  color: var(--white);
+  border-radius: 3px;
+}
+
+.navBar li:hover {
+  background: var(--dark1);
+  cursor: pointer;
+}
