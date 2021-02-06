@@ -53,7 +53,6 @@ class SearchBar extends React.Component {
               onChange={this.handleChange}
             />
             <button
-              className='btn'
               onClick={this.onSubmitSearch}
             ><FiSearch /></button>
           </form>

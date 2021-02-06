@@ -46,40 +46,33 @@ class AddRecipe extends React.Component {
   render() {
     return(
       <Fragment>
-        <div style={style.backgroundStyle}>
-          <div style={style.containerStyle}>
+        <div className='container'>
+          <div className='formContainer'>
             <form
               onSubmit={this.addRecipe}
-              style={style.formStyle}>
-              <label style={style.labelStyle}>
-                Title
+              >
+              <label>Title</label>
                 <input
                   type='text'
                   name='title'
                   value={this.state.title}
                   onChange={this.setValue}
                 />
-              </label>
-              <label style={style.labelStyle}>
-                Preparation Time
+              <label>Preparation Time</label>
                 <input
                   type='number'
                   name='prepTime'
                   value={this.state.prepTime}
                   onChange={this.setValue}
                 />
-              </label>
-              <label style={style.labelStyle}>
-                Servings
+              <label>Servings</label>
                 <input
                   type='number'
                   name='servings'
                   value={this.state.servings}
                   onChange={this.setValue}
                 />
-              </label>
-              <label style={style.labelStyle}>
-                Category
+              <label>Category</label>
                 <select
                   name='category'
                   value={this.state.category}
@@ -92,44 +85,30 @@ class AddRecipe extends React.Component {
                   <option value='drinks'>Drinks</option>
                   <option value='main'>Main</option>
                 </select>
-              </label>
-              <label style={style.labelStyle}>
-                Source
+              <label>Source</label>
                 <input
                   type='text'
                   name='source'
                   value={this.state.source}
                   onChange={this.setValue}
                 />
-              </label>
-              <label style={style.labelStyle}>
-                Link
+              <label>Link</label>
                 <input
                   type='text'
                   name='link'
                   value={this.state.link}
                   onChange={this.setValue}
                 />
-              </label>
-              <label style={style.labelStyle}>
-                Ingredients
+              <label>Ingredients</label>
                 <textarea
-                  style={{
-                    resize: 'none'
-                  }}
                   cols='20'
                   rows='5'
                   name='ingredients'
                   value={this.state.ingredients}
                   onChange={this.setValue}
                 />
-              </label>
-              <label style={style.labelStyle}>
-                Preparation Steps
+              <label>Preparation Steps</label>
                 <textarea
-                  style={{
-                    resize: 'none',
-                  }}
                   cols='20'
                   rows='5'
                   type='text'
@@ -137,13 +116,11 @@ class AddRecipe extends React.Component {
                   value={this.state.prepSteps}
                   onChange={this.setValue}
                 />
-              </label>
-              <button style={style.btnLight}>
-                Add Recipe
-              </button>
+              <button className='btn'> Add Recipe</button>
             </form>
           </div>
         </div>
+        <div className='line'></div>
       </Fragment>
     )
   }
