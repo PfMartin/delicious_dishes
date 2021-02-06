@@ -4,16 +4,7 @@ class RecipeList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allRecipes: [
-        {
-          title: 'Title',
-          preptime: 'PrepTime',
-        },
-        {
-          title: 'Title2',
-          preptime: 'preptime2'
-        }
-      ]
+      allRecipes: []
     };
 
     // this.server = 'localhost';
