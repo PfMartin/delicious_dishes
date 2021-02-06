@@ -4,7 +4,16 @@ class RecipeList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allRecipes: []
+      allRecipes: [
+        {
+          title: 'Title',
+          preptime: 'PrepTime',
+        },
+        {
+          title: 'Title2',
+          preptime: 'preptime2'
+        }
+      ]
     };
 
     // this.server = 'localhost';
@@ -31,19 +40,16 @@ class RecipeList extends React.Component {
 
   render() {
 
-    const line = {
-      borderBottom: 'solid #000 1px'
-    }
-
     return(
       <Fragment>
+        <div className='cardContainer'>
         {
           //Map through the list of recipes
           this.state.allRecipes.map((element) => {
             return(
               <div
+                className='recipeCard'
                 key={element.id}
-                style={{margin: '1rem'}}
                 >
                 <ul>
                   <li>{element.title}</li>
@@ -55,11 +61,11 @@ class RecipeList extends React.Component {
                   <li>{element.ingredients}</li>
                   <li>{element.prepsteps}</li>
                 </ul>
-                <div className='line'></div>
               </div>
             )
           })
         }
+        </div>
       </Fragment>
     )
   }
