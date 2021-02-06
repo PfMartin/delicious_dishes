@@ -31,35 +31,30 @@ ul {
   background: var(--accent);
 }
 
+.line {
+  margin: 0.5rem 7rem;
+  height: 0px;
+  border-bottom: 0.2px var(--accent) solid;
+}
+
+/* Header */
 .header {
+  margin: auto;
   font-family: 'Dancing Script', cursive;
   padding: 1rem 0;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   text-align: center;
-  background: var(--light2);
 }
 
-.header.form {
+.header .logo {
+  margin: auto;
 }
 
-.header form input {
-  width: 100px;
-  border: 1px solid var(--grey);
-  border-radius: 2px;
-  padding: 0.2rem;
+.header form {
+  margin: auto;
 }
 
-.header form input:focus {
-  border: 1px solid var(--accent);
-}
-
-.header form button {
-  width: 40px;
-  margin-left: 2px;
-}
-
-/* Navbar */
 .navBar {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -76,4 +71,26 @@ ul {
 .navBar li:hover {
   background: var(--dark1);
   cursor: pointer;
+}
+
+.header form input {
+  margin-right: 2px;
+  width: 100px;
+  border: 1px solid var(--grey);
+  border-radius: 3px;
+  padding: 0.3rem;
+}
+
+.header form input:focus {
+  outline: none;
+  border: 1px solid var(--accent);
+}
+
+.header form button {
+  margin: auto;
+  width: 26px;
+  height: 26px;
+  border-radius: 3px;
+  border: none;
+  color: var(--white);
 }
