@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react';
 
-const style = require('../style.js');
-
 class AddRecipe extends React.Component {
   constructor(props) {
     super(props);
@@ -46,7 +44,6 @@ class AddRecipe extends React.Component {
   render() {
     return(
       <Fragment>
-        <div className='container'>
           <div className='formContainer'>
             <form
               onSubmit={this.addRecipe}
@@ -119,7 +116,6 @@ class AddRecipe extends React.Component {
               <button className='btn'> Add Recipe</button>
             </form>
           </div>
-        </div>
         <div className='line'></div>
       </Fragment>
     )

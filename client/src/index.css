@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 :root {
-  --dark1: #2E1114;
-  --accent: #501B1D;
+  --accentDark: #4D4403;
+  --accent: #738D28;
   --medium: #64485C;
-  --light1: #83677B;
-  --light2: #ADADAD;
+  --lightGrey: #DFE4E7;
+  --mediumGrey: #C6C0B2;
 
   --white: #fff;
-  --black: #000;
+  --black: #1D0D00;
   --grey: #333;
 }
 
@@ -19,14 +19,29 @@
 }
 
 body {
+  color: var(--black);
+  background: var(--mediumGrey);
+  font-family: 'Montserrat', sans-serif;
 }
 
 ul {
   list-style: none;
 }
 
+textarea {
+  resize: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+input {
+    font-family: 'Montserrat', sans-serif;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 .btn {
-  font-family: 'Dancing Script', cursive;
   background: var(--accent);
   border-radius: 3px;
   border: none;
@@ -37,7 +52,7 @@ ul {
 }
 
 .btn:hover {
-  background: var(--dark1);
+  background: var(--accentDark);
   cursor: pointer;
 }
 
@@ -48,19 +63,15 @@ ul {
 }
 
 .shortLine {
-  margin: 0.5rem 20rem;
+  margin: 1rem 20rem;
   height: 0px;
   border-bottom: 0.2px var(--accent) solid;
 }
 
-textarea {
-  resize: none;
-}
 
 /* Header */
 .header {
   margin: auto;
-  font-family: 'Dancing Script', cursive;
   padding: 1rem 0;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
@@ -85,7 +96,7 @@ textarea {
 }
 
 .navBar li:hover {
-  background: var(--dark1);
+  background: var(--accentDark);
   cursor: pointer;
 }
 
@@ -117,20 +128,20 @@ textarea {
 }
 
 .header form button:hover {
-  background: var(--dark1);
+  background: var(--accentDark);
   cursor: pointer;
 }
 
 /* Add Recipes */
 .formContainer {
-  margin: auto;
-  border: 1px var(--accent) solid;
+  margin: 1.5rem auto;
+  border: 2px var(--accent) solid;
+  /* background: var(--lightGrey); */
   border-radius: 3px;
-  max-width: 600px;
+  max-width: 400px;
 }
 
 .formContainer form {
-  font-family: 'Dancing Script', cursive;
   display: grid;
   padding: 1rem;
   color: var(--grey);
@@ -149,10 +160,13 @@ textarea {
 .formContainer form textarea,
 .formContainer form select {
   padding: 0.2rem;
-  font-family: 'Nunito', sans-serif;
   border: 1px var(--accent) solid;
   border-radius: 3px;
   color: var(--accent);
+}
+
+.formContainer form select {
+  background: var(--lightGrey);
 }
 
 .formContainer form select option {
@@ -185,7 +199,6 @@ textarea {
 
 .footer {
   padding: 0.5rem;
-  font-family: 'Dancing Script', cursive;
   color: var(--accent);
   text-align: center;
 }
