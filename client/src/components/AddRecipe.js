@@ -16,7 +16,10 @@ class AddRecipe extends React.Component {
       },
       ingredientParts: [
         { amount: '', ingredient: '' },
-      ]
+      ],
+      steps: [
+        { step: ''},
+      ],
     }
 
     // this.server = 'localhost';
@@ -51,7 +54,7 @@ class AddRecipe extends React.Component {
     //   }))
   }
 
-  onMoreFields = (e) => {
+  onAddIngredient = (e) => {
     e.preventDefault();
 
     this.setState((prevState) => ({
@@ -62,17 +65,54 @@ class AddRecipe extends React.Component {
     }))
   }
 
-  onLessFields = (e, index) => {
+  onRemoveIngredient = (e, index) => {
     e.preventDefault();
 
     let list = [...this.state.ingredientParts];
-
-    list.splice(index, 1);
-    this.setState({
-      ingredientParts: list,
-    })
+    if(list.length > 1) {
+      list.splice(index, 1);
+      this.setState({
+        ingredientParts: list,
+      })
+    }
   }
 
+  setStep = async (e, index) => {
+    const { name, value } = e.target;
+
+    let list = [...this.state.steps];
+
+    list[index][name] = value;
+
+    await this.setState({
+      step: list,
+    })
+
+    console.log(this.state.steps)
+  }
+
+  onAddStep = (e) => {
+    e.preventDefault();
+
+    this.setState((prevState) => ({
+      steps: [
+        ...prevState.steps,
+        { step: '' }
+      ]
+    }))
+  }
+
+  onRemoveStep = (e, index) => {
+    e.preventDefault();
+
+    let list = [...this.state.steps];
+    if(list.length > 1) {
+      list.splice(index, 1);
+      this.setState({
+        steps: list,
+      })
+    }
+  }
 
   addRecipe = async(e) => {
     e.preventDefault();
@@ -147,7 +187,7 @@ class AddRecipe extends React.Component {
                   onChange={this.setValue}
                 />
               <label>Ingredients</label>
-              <label className='stepContainer' id='1'>
+              <label className='ingredientContainer' id='1'>
                 <p>Amount</p><p>Ingredient</p><p>Option</p>
                 {
                   this.state.ingredientParts.map((x, i) => {
@@ -167,11 +207,11 @@ class AddRecipe extends React.Component {
                         />
                         <div className='option'>
                           <button
-                            onClick={this.onMoreFields}
+                            onClick={this.onAddIngredient}
                             >+
                           </button>
                           <button
-                            onClick={e => this.onLessFields(e, i)}>-</button>
+                            onClick={e => this.onRemoveIngredient(e, i)}>-</button>
                         </div>
                       </Fragment>
                     )
@@ -179,14 +219,32 @@ class AddRecipe extends React.Component {
                 }
               </label>
               <label>Preparation Steps</label>
-                <textarea
-                  cols='20'
-                  rows='5'
-                  type='text'
-                  name='prepSteps'
-                  value={this.state.prepSteps}
-                  onChange={this.setValue}
-                />
+              <label className="stepContainer">
+                <p>Step</p><p>Option</p>
+                {
+                  this.state.steps.map((x, i) => {
+                    return (
+                      <Fragment key={i}>
+                        <input
+                          type='text'
+                          name='step'
+                          value={x.step}
+                          onChange={e => this.setStep(e, i)}>
+                        </input>
+                        <div className='option'>
+                          <button
+                            onClick={this.onAddStep}
+                          >+
+                          </button>
+                          <button
+                            onClick={e => this.onRemoveStep(e, i)}
+                          >-</button>
+                        </div>
+                      </Fragment>
+                    )
+                  })
+                }
+              </label>
               <button className='btn'> Add Recipe</button>
             </form>
           </div>
