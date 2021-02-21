@@ -1,14 +1,21 @@
 import React, { Fragment } from 'react';
 
+import RecipeDetail from './RecipeDetail.js';
+import RecipeCards from './RecipeCards.js';
+
 class RecipeList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allRecipes: []
+      allRecipes: [],
+      currentRecipe: {},
+      detail: false,
     };
 
-    // this.server = 'localhost';
-    this.server = '192.168.178.26'; // Pi
+    this.server = 'localhost';
+    // this.server = '192.168.178.26'; // Pi
+
+    this.onRecipeDetail = this.onRecipeDetail.bind(this);
   }
 
 //Fetch recipes from the database when the component is mounted
@@ -18,45 +25,34 @@ class RecipeList extends React.Component {
 
       const jsonData = await response.json();
 
-      this.setState({
+      await this.setState({
         allRecipes: jsonData
       })
-
-      console.log(this.state.allRecipes);
 
     } catch(err) {
       console.error(err);
     }
   }
 
+  onRecipeDetail = async (e) => {
+    const recipeId = await e.currentTarget.getAttribute('id');
+    const currentRecipe = await this.state.allRecipes.filter(element => element.id === parseInt(recipeId));
+
+
+    this.setState({
+      currentRecipe: currentRecipe,
+      detail: true,
+    })
+  }
+
   render() {
 
     return(
       <Fragment>
-        <div className='cardContainer'>
         {
-          //Map through the list of recipes
-          this.state.allRecipes.map((element) => {
-            return(
-              <div
-                className='recipeCard'
-                key={element.id}
-                >
-                <ul>
-                  <li>{element.title}</li>
-                  <li>{element.preptime}</li>
-                  <li>{element.servings}</li>
-                  <li>{element.category}</li>
-                  <li>{element.source}</li>
-                  <li>{element.link}</li>
-                  <li>{element.ingredients}</li>
-                  <li>{element.prepsteps}</li>
-                </ul>
-              </div>
-            )
-          })
+          this.state.detail === true ? <RecipeDetail currentRecipe={this.state.currentRecipe}/>
+          : <RecipeCards recipes={this.state.allRecipes} onRecipeDetail={this.onRecipeDetail}/>
         }
-        </div>
       </Fragment>
     )
   }

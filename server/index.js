@@ -25,14 +25,27 @@ app.get('/', async(req, res) => {
 
 app.post('/addRecipe', async(req, res) => {
   try {
-    const { title, prepTime, servings, category, source, link, ingredients, prepSteps } = await req.body;
+    const { title, prepTime, servings, category, source, link, ingredientList, stepsList } = await req.body;
+
+    const listOfIngredients = ingredientList.map((e) => {
+      return (`${e.amount} ${e.ingredient}`);
+    });
+    const listOfSteps = stepsList.map((e) => {
+      return e.step
+    })
+
+    const prepSteps = listOfSteps.join('|');
+    const ingredients = listOfIngredients.join('|');
+
 
     await addRecipe(title, prepTime, servings, category, source, link, ingredients, prepSteps);
 
-    console.log(title, prepTime, servings, category, source, link, ingredients, prepSteps);
+    console.log(title, prepTime, servings, category, source, link, ingredientList, stepsList);
 
     res.send('Success');
+    
     console.log(`Website has been added: ${req.body}`);
+
   } catch(err) {
     console.error(err.message);
   }
@@ -49,8 +62,8 @@ app.get('/getRecipes', async(req,res) => {
 })
 
 const port = 5000;
-const host = '192.168.178.26'; //Pi
-// const host = 'localhost';
+// const host = '192.168.178.26'; //Pi
+const host = 'localhost';
 
 
 app.listen(port, host, () => {
