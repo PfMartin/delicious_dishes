@@ -3,33 +3,58 @@ import React, { Fragment } from 'react';
 class RecipeDetail extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      title: '',
+      ingredients: [],
+      prepsteps: [],
+    };
   }
 
-  componentDidMount = () => {
-    console.log(this.props.currentRecipe);
-    console.log(this.props.currentRecipe.title);
+  componentDidMount = async () => {
+    await this.setState(this.props.currentRecipe[0])
+    console.log(this.props.currentRecipe[0]);
+
+
+    // console.log(this.state.ingredientsList);
   }
 
   render() {
     return(
         <Fragment>
-          {
-            this.props.currentRecipe.map((element) => {
-              return (
-                <ul>
-                  <li>{element.title}</li>
-                  <li>{element.preptime}</li>
-                  <li>{element.servings}</li>
-                  <li>{element.category}</li>
-                  <li>{element.source}</li>
-                  <li>{element.link}</li>
-                  <li>{element.ingredients}</li>
-                  <li>{element.prepsteps}</li>
-                </ul>
-              )
-            })
-          }
+          <header className='detail'>
+            <button
+              className='btn'
+              onClick={this.props.onRecipeList}
+              >Back
+            </button>
+          </header>
+          <h1>{this.state.title}</h1>
+          <ul className='meta'>
+            <li>Preparation Time: {this.state.preptime}</li>
+            <li>Serving: {this.state.servings}</li>
+            <li>Category: {this.state.category}</li>
+            <li>Source:&nbsp;
+              <a href={this.state.link}>{this.state.source}</a>
+            </li>
+          </ul>
+          <ol>
+            {
+              this.state.ingredients.map((element) => {
+                return (
+                  <li>{element}</li>
+                )
+              })
+            }
+          </ol>
+          <ol>
+            {
+              this.state.prepsteps.map((element) => {
+                return (
+                  <li>{element}</li>
+                )
+              })
+            }
+          </ol>
         </Fragment>
     )
   }

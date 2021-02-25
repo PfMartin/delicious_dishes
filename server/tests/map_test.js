@@ -29,3 +29,7 @@ console.log(prepSteps);
 const steps = prepSteps.split('|');
 
 console.log(steps);
+
+steps.map((element) => {
+  console.log(element);
+})

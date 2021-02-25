@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
 import EditRecipes from './components/EditRecipes.js'
-import RecipeList from './components/RecipeList.js';
+import ShowRecipes from './components/ShowRecipes.js';
 import AddRecipe from './components/AddRecipe.js';
 
 
@@ -30,7 +30,7 @@ class App extends React.Component {
       <Fragment>
         <Header onHandleSite={this.onHandleSite}/>
         {this.state.site === 'addRecipe' ? <AddRecipe />
-        : this.state.site === 'showRecipes' ? <RecipeList />
+        : this.state.site === 'showRecipes' ? <ShowRecipes />
         : <EditRecipes />}
         <Footer />
       </Fragment>

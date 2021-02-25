@@ -43,7 +43,7 @@ app.post('/addRecipe', async(req, res) => {
     console.log(title, prepTime, servings, category, source, link, ingredientList, stepsList);
 
     res.send('Success');
-    
+
     console.log(`Website has been added: ${req.body}`);
 
   } catch(err) {
@@ -53,8 +53,16 @@ app.post('/addRecipe', async(req, res) => {
 
 app.get('/getRecipes', async(req,res) => {
   try{
-    const allRecipes = await getRecipes();
+    let allRecipes = await getRecipes();
 
+    allRecipes.forEach((element) => {
+      element.ingredients = element.ingredients.split('|');
+
+      element.prepsteps = element.prepsteps.split('|');
+    })
+
+    console.log(allRecipes);
+    
     res.json(allRecipes);
   } catch(err) {
     console.error(err.message);

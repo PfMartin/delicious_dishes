@@ -6,8 +6,6 @@ class RecipeCards extends React.Component {
     this.state = {}
   }
 
-
-
   render() {
     return (
       <Fragment>
@@ -29,8 +27,6 @@ class RecipeCards extends React.Component {
                 <li>{element.category}</li>
                 <li>{element.source}</li>
                 <li>{element.link}</li>
-                <li>{element.ingredients}</li>
-                <li>{element.prepsteps}</li>
                 </ul>
               </div>
             )

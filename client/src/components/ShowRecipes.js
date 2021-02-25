@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import RecipeDetail from './RecipeDetail.js';
 import RecipeCards from './RecipeCards.js';
 
-class RecipeList extends React.Component {
+class ShowRecipes extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,6 +16,7 @@ class RecipeList extends React.Component {
     // this.server = '192.168.178.26'; // Pi
 
     this.onRecipeDetail = this.onRecipeDetail.bind(this);
+    this.onRecipeList = this.onRecipeList.bind(this);
   }
 
 //Fetch recipes from the database when the component is mounted
@@ -29,6 +30,8 @@ class RecipeList extends React.Component {
         allRecipes: jsonData
       })
 
+      console.log(this.state);
+
     } catch(err) {
       console.error(err);
     }
@@ -38,10 +41,16 @@ class RecipeList extends React.Component {
     const recipeId = await e.currentTarget.getAttribute('id');
     const currentRecipe = await this.state.allRecipes.filter(element => element.id === parseInt(recipeId));
 
-
     this.setState({
       currentRecipe: currentRecipe,
       detail: true,
+    })
+  }
+
+  onRecipeList = async (e) => {
+    this.setState({
+      currentRecipe: '',
+      detail: false,
     })
   }
 
@@ -49,13 +58,16 @@ class RecipeList extends React.Component {
 
     return(
       <Fragment>
-        {
-          this.state.detail === true ? <RecipeDetail currentRecipe={this.state.currentRecipe}/>
-          : <RecipeCards recipes={this.state.allRecipes} onRecipeDetail={this.onRecipeDetail}/>
-        }
+        <div className='paddingContainer'>
+          {
+            this.state.detail === true ? <RecipeDetail currentRecipe={this.state.currentRecipe}
+            onRecipeList={this.onRecipeList}/>
+            : <RecipeCards recipes={this.state.allRecipes} onRecipeDetail={this.onRecipeDetail}/>
+          }
+        </div>
       </Fragment>
     )
   }
 }
 
-export default RecipeList;
+export default ShowRecipes;
