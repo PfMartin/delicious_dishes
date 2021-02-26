@@ -7,6 +7,7 @@ const cors = require('cors');
 const database = require('./db.js');
 const addRecipe = database.addRecipe;
 const getRecipes = database.getRecipes;
+const getRecipe = database.getRecipe;
 
 //Middleware
 app.use(cors());
@@ -62,8 +63,25 @@ app.get('/getRecipes', async(req,res) => {
     })
 
     console.log(allRecipes);
-    
+
     res.json(allRecipes);
+  } catch(err) {
+    console.error(err.message);
+  }
+})
+
+app.get('/getRecipes/:id', async(req, res) => {
+  try {
+    const { id } = req.params; // Get the id from req.params
+    let recipe = await getRecipe(id);
+
+    recipe.forEach((element) => {
+      element.ingredients = element.ingredients.split('|');
+
+      element.prepsteps = element.prepsteps.split('|');
+    })
+
+    res.json(recipe);
   } catch(err) {
     console.error(err.message);
   }

@@ -24,8 +24,17 @@ const getRecipes = async () => {
   return rows;
 }
 
+const getRecipe = async (id) => {
+  const recipe = await pool.query('SELECT * FROM recipes WHERE id = $1', [id]);
+
+  const rows = await recipe.rows;
+
+  return rows;
+}
+
 
 module.exports = {
   addRecipe: addRecipe,
   getRecipes: getRecipes,
+  getRecipe: getRecipe,
 };

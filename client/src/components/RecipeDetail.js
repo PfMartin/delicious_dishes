@@ -13,9 +13,6 @@ class RecipeDetail extends React.Component {
   componentDidMount = async () => {
     await this.setState(this.props.currentRecipe[0])
     console.log(this.props.currentRecipe[0]);
-
-
-    // console.log(this.state.ingredientsList);
   }
 
   render() {

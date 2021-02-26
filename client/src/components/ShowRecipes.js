@@ -39,7 +39,9 @@ class ShowRecipes extends React.Component {
 
   onRecipeDetail = async (e) => {
     const recipeId = await e.currentTarget.getAttribute('id');
-    const currentRecipe = await this.state.allRecipes.filter(element => element.id === parseInt(recipeId));
+    const response = await fetch(`http://${this.server}:5000/getRecipes/${recipeId}`)
+
+    const currentRecipe = await response.json();
 
     this.setState({
       currentRecipe: currentRecipe,
