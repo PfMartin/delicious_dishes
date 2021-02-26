@@ -203,11 +203,12 @@ class AddRecipe extends React.Component {
               </label>
               <label>Preparation Steps</label>
               <label className="stepContainer">
-                <p>Step</p><p>Option</p>
+                <p>#</p><p>Step</p><p>Option</p>
                 {
                   this.state.stepsList.map((x, i) => {
                     return (
                       <Fragment key={i}>
+                        {i+1}
                         <input
                           type='text'
                           name='step'

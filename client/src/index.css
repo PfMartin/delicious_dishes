@@ -81,7 +81,6 @@ button {
   border-bottom: 0.2px var(--accent) solid;
 }
 
-
 /* Header */
 .header {
   margin: auto;
@@ -219,8 +218,9 @@ button {
 
 .formContainer form label.stepContainer {
   display: grid;
-  grid-template-columns: 6fr 1fr;
+  grid-template-columns: 0.3fr 6fr 1fr;
   grid-column-gap: 1rem;
+  align-items: center;
 }
 
 .formContainer form label.stepContainer p {
