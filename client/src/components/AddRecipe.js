@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { BiPlus, BiTrash } from 'react-icons/bi';
 
 class AddRecipe extends React.Component {
   constructor(props) {
@@ -191,10 +192,10 @@ class AddRecipe extends React.Component {
                         <div className='option'>
                           <button
                             onClick={this.onAddIngredient}
-                            >+
+                            ><BiPlus />
                           </button>
                           <button
-                            onClick={e => this.onRemoveIngredient(e, i)}>-</button>
+                            onClick={e => this.onRemoveIngredient(e, i)}><BiTrash /></button>
                         </div>
                       </Fragment>
                     )
@@ -208,7 +209,7 @@ class AddRecipe extends React.Component {
                   this.state.stepsList.map((x, i) => {
                     return (
                       <Fragment key={i}>
-                        {i+1}
+                        {i+1}.
                         <input
                           type='text'
                           name='step'
@@ -218,11 +219,11 @@ class AddRecipe extends React.Component {
                         <div className='option'>
                           <button
                             onClick={this.onAddStep}
-                          >+
+                            ><BiPlus />
                           </button>
                           <button
                             onClick={e => this.onRemoveStep(e, i)}
-                          >-</button>
+                          ><BiTrash /></button>
                         </div>
                       </Fragment>
                     )

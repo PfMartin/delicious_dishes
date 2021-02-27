@@ -51,6 +51,16 @@ input[type=number]::-webkit-inner-spin-button {
 
 button {
   font-family: 'Montserrat', sans-serif;
+  color: var(--white);
+  background: var(--accent);
+  outline: none;
+  border: none;
+  border-radius: 3px;
+}
+
+button:hover {
+  background: var(--accentDark);
+  cursor: pointer;
 }
 
 .btn {
