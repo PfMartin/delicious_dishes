@@ -25,33 +25,37 @@ class RecipeDetail extends React.Component {
               >Back
             </button>
           </header>
-          <h1>{this.state.title}</h1>
-          <ul className='meta'>
-            <li>Preparation Time: {this.state.preptime}</li>
-            <li>Serving: {this.state.servings}</li>
-            <li>Category: {this.state.category}</li>
-            <li>Source:&nbsp;
-              <a href={this.state.link}>{this.state.source}</a>
-            </li>
-          </ul>
-          <ol>
-            {
-              this.state.ingredients.map((element) => {
-                return (
-                  <li>{element}</li>
-                )
-              })
-            }
-          </ol>
-          <ol>
-            {
-              this.state.prepsteps.map((element) => {
-                return (
-                  <li>{element}</li>
-                )
-              })
-            }
-          </ol>
+          <body className='bodyDetail'>
+            <ul className='meta'>
+              <h1>{this.state.title}</h1>
+                <li>Preparation Time: {this.state.preptime}</li>
+                <li>Serving: {this.state.servings}</li>
+                <li>Category: {this.state.category}</li>
+                <li>Source:&nbsp;
+                  <a href={this.state.link}>{this.state.source}</a>
+                </li>
+            </ul>
+            <ul className='ingredients'>
+              <h3>Ingredients</h3>
+              {
+                this.state.ingredients.map((element) => {
+                  return (
+                    <li>{element}</li>
+                  )
+                })
+              }
+            </ul>
+            <ol className='prepSteps'>
+              <h3>Preparation Steps</h3>
+              {
+                this.state.prepsteps.map((element) => {
+                  return (
+                    <li>{element}</li>
+                  )
+                })
+              }
+            </ol>
+          </body>
         </Fragment>
     )
   }

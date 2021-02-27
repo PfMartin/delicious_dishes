@@ -28,6 +28,10 @@ ul {
   list-style: none;
 }
 
+ol {
+  list-style-position: inside;
+}
+
 textarea {
   resize: none;
     font-family: 'Montserrat', sans-serif;
@@ -280,4 +284,20 @@ button:hover {
 
 .paddingContainer {
   padding: 1rem;
+}
+
+
+/* RecipeDetail */
+body.bodyDetail {
+  margin: 2rem;
+}
+
+body.bodyDetail .ingredients {
+  text-align: left;
+  margin-top: 2rem;
+}
+
+body.bodyDetail .prepSteps {
+  text-align: left;
+  margin-top: 2rem;
 }
