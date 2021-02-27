@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { BiPencil, BiArrowBack, BiTrash } from 'react-icons/bi';
 
 class RecipeDetail extends React.Component {
   constructor(props) {
@@ -19,11 +20,25 @@ class RecipeDetail extends React.Component {
     return(
         <Fragment>
           <header className='detail'>
-            <button
-              className='btn'
-              onClick={this.props.onRecipeList}
-              >Back
-            </button>
+            <div className='back'>
+              <button
+                className='btn'
+                onClick={this.props.onRecipeList}
+                ><BiArrowBack />
+              </button>
+            </div>
+            <div className='control'>
+              <button
+                className='btn'
+                >
+                <BiPencil />
+              </button>
+              <button
+                className='btn'
+                >
+                <BiTrash />
+              </button>
+            </div>
           </header>
           <body className='bodyDetail'>
             <ul className='meta'>

@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { BiPencil } from 'react-icons/bi';
 
 class RecipeCards extends React.Component {
   constructor(props) {
@@ -20,13 +21,14 @@ class RecipeCards extends React.Component {
               id={element.id}
               onClick={this.props.onRecipeDetail}
               >
+                <BiPencil style={{float: 'right'}}/>
                 <ul>
-                <li>{element.title}</li>
-                <li>{element.preptime}</li>
-                <li>{element.servings}</li>
-                <li>{element.category}</li>
-                <li>{element.source}</li>
-                <li>{element.link}</li>
+                  <h3>{element.title}</h3>
+                  <li>Category: {element.category}</li>
+                  <li>Preparation Time: {element.preptime} min</li>
+                  <li>Servings: {element.servings}</li>
+                  Source:&nbsp;
+                  <a href={element.link}> {element.source}</a>
                 </ul>
               </div>
             )
