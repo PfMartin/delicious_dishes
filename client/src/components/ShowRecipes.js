@@ -12,8 +12,8 @@ class ShowRecipes extends React.Component {
       detail: false,
     };
 
-    this.server = 'localhost';
-    // this.server = '192.168.178.26'; // Pi
+    // this.server = 'localhost';
+    this.server = '192.168.178.26'; // Pi
 
     this.onRecipeDetail = this.onRecipeDetail.bind(this);
     this.onRecipeList = this.onRecipeList.bind(this);
