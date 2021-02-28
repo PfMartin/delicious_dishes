@@ -30,8 +30,6 @@ class ShowRecipes extends React.Component {
         allRecipes: jsonData
       })
 
-      console.log(this.state);
-
     } catch(err) {
       console.error(err);
     }

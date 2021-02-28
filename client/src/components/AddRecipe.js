@@ -6,8 +6,8 @@ class AddRecipe extends React.Component {
     super(props);
     this.state = {
       title: '',
-      prepTime: '',
-      servings: '',
+      prepTime: 0,
+      servings: 0,
       category: '',
       source: '',
       link: '',
@@ -101,15 +101,16 @@ class AddRecipe extends React.Component {
 
   addRecipe = async(e) => {
     e.preventDefault();
-    try{
+    try {
       const response = await fetch(`http://${this.server}:5000/addRecipe`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(this.state)
       });
-    //   window.location = '/';
-      console.log(response);
-      console.log(this.state);
+      if (response.status === 200) {
+        // console.log("that worked");
+        window.location = '/';
+      }
     } catch(err) {
       console.error(err.message);
     }
