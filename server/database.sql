@@ -9,8 +9,8 @@ CREATE TABLE recipes (
   category VARCHAR(16),
   source VARCHAR(64),
   link VARCHAR(128),
-  ingredients VARCHAR(512),
-  prepSteps VARCHAR (512)
+  ingredients VARCHAR(1000),
+  prepSteps VARCHAR (2000)
 );
 
 /*Test Data*/
