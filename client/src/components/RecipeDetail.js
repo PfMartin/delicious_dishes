@@ -17,6 +17,7 @@ class RecipeDetail extends React.Component {
   }
 
 
+
   render() {
     return(
         <Fragment>
@@ -32,7 +33,8 @@ class RecipeDetail extends React.Component {
               <button
                 className='btn'
                 >
-                <BiPencil />
+                <BiPencil
+                  onClick={this.props.onRecipeDetailEdit}/>
               </button>
               <button
                 className='btn'
@@ -56,7 +58,7 @@ class RecipeDetail extends React.Component {
               {
                 this.state.ingredients.map((element) => {
                   return (
-                    <li>{element}</li>
+                    <li key={element.id}>{element.amount} {element.ingredient}</li>
                   )
                 })
               }
@@ -66,7 +68,7 @@ class RecipeDetail extends React.Component {
               {
                 this.state.prepsteps.map((element) => {
                   return (
-                    <li>{element}</li>
+                    <li key={element.id}>{element.step}</li>
                   )
                 })
               }

@@ -6,21 +6,21 @@ class AddRecipe extends React.Component {
     super(props);
     this.state = {
       title: '',
-      prepTime: 0,
+      preptime: 0,
       servings: 0,
       category: '',
       source: '',
       link: '',
-      ingredientList: [
+      ingredients: [
         { amount: '', ingredient: '' },
       ],
-      stepsList: [
+      steps: [
         { step: ''},
       ],
     }
 
-    // this.server = 'localhost';
-    this.server = '192.168.178.26'; //Pi
+    this.server = 'localhost';
+    // this.server = '192.168.178.26'; //Pi
   }
 
   setValue = async (e) => {
@@ -32,12 +32,12 @@ class AddRecipe extends React.Component {
   setIngredient = async (e, index) => {
     const { name, value } = e.target;
 
-    let list = [...this.state.ingredientList];
+    let list = [...this.state.ingredients];
 
     list[index][name] = value;
 
     this.setState({
-      ingredientList: list,
+      ingredients: list,
     })
   }
 
@@ -45,8 +45,8 @@ class AddRecipe extends React.Component {
     e.preventDefault();
 
     this.setState((prevState) => ({
-      ingredientList: [
-        ...prevState.ingredientList,
+      ingredients: [
+        ...prevState.ingredients,
         { amount: '', ingredient: '' }
       ]
     }))
@@ -55,11 +55,11 @@ class AddRecipe extends React.Component {
   onRemoveIngredient = (e, index) => {
     e.preventDefault();
 
-    let list = [...this.state.ingredientList];
+    let list = [...this.state.ingredients];
     if(list.length > 1) {
       list.splice(index, 1);
       this.setState({
-        ingredientList: list,
+        ingredients: list,
       })
     }
   }
@@ -67,12 +67,12 @@ class AddRecipe extends React.Component {
   setStep = (e, index) => {
     const { name, value } = e.target;
 
-    let list = [...this.state.stepsList];
+    let list = [...this.state.steps];
 
     list[index][name] = value;
 
     this.setState({
-      stepsList: list,
+      steps: list,
     })
   }
 
@@ -80,8 +80,8 @@ class AddRecipe extends React.Component {
     e.preventDefault();
 
     this.setState((prevState) => ({
-      stepsList: [
-        ...prevState.stepsList,
+      steps: [
+        ...prevState.steps,
         { step: '' }
       ]
     }))
@@ -90,11 +90,11 @@ class AddRecipe extends React.Component {
   onRemoveStep = (e, index) => {
     e.preventDefault();
 
-    let list = [...this.state.stepsList];
+    let list = [...this.state.steps];
     if(list.length > 1) {
       list.splice(index, 1);
       this.setState({
-        stepsList: list,
+        steps: list,
       })
     }
   }
@@ -133,8 +133,8 @@ class AddRecipe extends React.Component {
               <label>Preparation Time</label>
                 <input
                   type='number'
-                  name='prepTime'
-                  value={this.state.prepTime}
+                  name='preptime'
+                  value={this.state.preptime}
                   onChange={this.setValue}
                 />
               <label>Servings</label>
@@ -175,7 +175,7 @@ class AddRecipe extends React.Component {
               <label className='ingredientContainer' id='1'>
                 <p>Amount</p><p>Ingredient</p><p>Option</p>
                 {
-                  this.state.ingredientList.map((x, i) => {
+                  this.state.ingredients.map((x, i) => {
                     return (
                       <Fragment key={i}>
                         <input
@@ -207,7 +207,7 @@ class AddRecipe extends React.Component {
               <label className="stepContainer">
                 <p>#</p><p>Step</p><p>Option</p>
                 {
-                  this.state.stepsList.map((x, i) => {
+                  this.state.steps.map((x, i) => {
                     return (
                       <Fragment key={i}>
                         {i+1}.

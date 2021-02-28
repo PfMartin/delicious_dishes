@@ -39,11 +39,6 @@ class SearchBar extends React.Component {
               onClick={this.props.onHandleSite}
               >Show Recipes
             </li>
-            <li
-              name='editRecipes'
-              onClick={this.props.onHandleSite}
-              >Edit Recipes
-            </li>
           </ul>
           <form >
             <input

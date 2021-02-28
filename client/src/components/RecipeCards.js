@@ -7,6 +7,10 @@ class RecipeCards extends React.Component {
     this.state = {}
   }
 
+  componentDidMount = (e) => {
+    console.log(this.props.recipes);
+  }
+
   render() {
     return (
       <Fragment>
@@ -21,7 +25,9 @@ class RecipeCards extends React.Component {
               id={element.id}
               onClick={this.props.onRecipeDetail}
               >
-                <BiPencil style={{float: 'right'}}/>
+                <BiPencil
+                  style={{float: 'right'}}
+                  onClick={this.props.onRecipeOverviewDetail}/>
                 <ul>
                   <h3>{element.title}</h3>
                   <li>Category: {element.category}</li>

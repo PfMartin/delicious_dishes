@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 
 import RecipeDetail from './RecipeDetail.js';
 import RecipeCards from './RecipeCards.js';
+import EditRecipes from './EditRecipes.js';
 
 class ShowRecipes extends React.Component {
   constructor(props) {
@@ -9,14 +10,16 @@ class ShowRecipes extends React.Component {
     this.state = {
       allRecipes: [],
       currentRecipe: {},
-      detail: false,
+      site: 'overview',
     };
 
-    // this.server = 'localhost';
-    this.server = '192.168.178.26'; // Pi
+    this.server = 'localhost';
+    // this.server = '192.168.178.26'; // Pi
 
     this.onRecipeDetail = this.onRecipeDetail.bind(this);
     this.onRecipeList = this.onRecipeList.bind(this);
+    this.onRecipeOverviewEdit = this.onRecipeOverviewEdit.bind(this);
+    this.onRecipeDetailEdit = this.onRecipeDetailEdit.bind(this);
   }
 
 //Fetch recipes from the database when the component is mounted
@@ -43,14 +46,34 @@ class ShowRecipes extends React.Component {
 
     this.setState({
       currentRecipe: currentRecipe,
-      detail: true,
+      site: 'detail',
+    })
+  }
+
+  onRecipeOverviewEdit = async (e) => {
+    const recipeId = await e.currentTarget.getAttribute('id');
+    const response = await fetch(`http://${this.server}:5000/getRecipes/${recipeId}`)
+
+    const currentRecipe = await response.json();
+
+    this.setState({
+      currentRecipe: currentRecipe,
+      site: 'edit',
+    })
+  }
+
+  onRecipeDetailEdit = (e) => {
+    e.preventDefault();
+
+    this.setState({
+      site: 'edit'
     })
   }
 
   onRecipeList = async (e) => {
     this.setState({
       currentRecipe: '',
-      detail: false,
+      site: 'overview',
     })
   }
 
@@ -60,9 +83,11 @@ class ShowRecipes extends React.Component {
       <Fragment>
         <div className='paddingContainer'>
           {
-            this.state.detail === true ? <RecipeDetail currentRecipe={this.state.currentRecipe}
-            onRecipeList={this.onRecipeList}/>
-            : <RecipeCards recipes={this.state.allRecipes} onRecipeDetail={this.onRecipeDetail}/>
+            this.state.site === 'detail' ? <RecipeDetail currentRecipe={this.state.currentRecipe}
+            onRecipeList={this.onRecipeList}
+            onRecipeDetailEdit={this.onRecipeDetailEdit}/>
+            : this.state.site === 'edit' ? <EditRecipes currentRecipe={this.state.currentRecipe}/>
+            : <RecipeCards recipes={this.state.allRecipes} onRecipeDetail={this.onRecipeDetail} onRecipeOverviewEdit={this.onRecipeOverviewEdit}/>
           }
         </div>
       </Fragment>

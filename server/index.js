@@ -26,22 +26,22 @@ app.get('/', async(req, res) => {
 
 app.post('/addRecipe', async(req, res) => {
   try {
-    const { title, prepTime, servings, category, source, link, ingredientList, stepsList } = await req.body;
+    let { title, prepTime, servings, category, source, link, ingredients, steps } = await req.body;
 
-    const listOfIngredients = ingredientList.map((e) => {
-      return (`${e.amount} ${e.ingredient}`);
+    const listOfIngredients = ingredients.map((e) => {
+      return (`${e.amount}, ${e.ingredient}`);
     });
-    const listOfSteps = stepsList.map((e) => {
+    const listOfSteps = steps.map((e) => {
       return e.step
     })
 
-    const prepSteps = listOfSteps.join('|');
-    const ingredients = listOfIngredients.join('|');
+    prepSteps = listOfSteps.join('|');
+    ingredients = listOfIngredients.join('|');
 
 
     await addRecipe(title, prepTime, servings, category, source, link, ingredients, prepSteps);
 
-    console.log(title, prepTime, servings, category, source, link, ingredientList, stepsList);
+    console.log(title, prepTime, servings, category, source, link, ingredients, steps);
 
     res.send('Success');
 
@@ -57,12 +57,32 @@ app.get('/getRecipes', async(req,res) => {
     let allRecipes = await getRecipes();
 
     allRecipes.forEach((element) => {
-      element.ingredients = element.ingredients.split('|');
+      let ingredientsList = element.ingredients.split('|');
 
-      element.prepsteps = element.prepsteps.split('|');
-    })
+      let ingredients = [];
 
-    console.log(allRecipes);
+      ingredientsList.forEach((element) => {
+        let ingredientObject = {};
+        ingredientObject.amount = element.split(',')[0];
+        ingredientObject.ingredient = element.split(',')[1];
+
+        ingredients.push(ingredientObject);
+      })
+
+      let prepstepsList = element.prepsteps.split('|');
+
+      let prepsteps = [];
+
+      prepstepsList.forEach((element) => {
+        let stepObject = {};
+        stepObject.step = element;
+
+        prepsteps.push(stepObject);
+      })
+
+      element.ingredients = ingredients;
+      element.prepsteps = prepsteps;
+    });
 
     res.json(allRecipes);
   } catch(err) {
@@ -75,10 +95,32 @@ app.get('/getRecipes/:id', async(req, res) => {
     const { id } = req.params; // Get the id from req.params
     let recipe = await getRecipe(id);
 
-    recipe.forEach((element) => {
-      element.ingredients = element.ingredients.split('|');
+    console.log(recipe);
 
-      element.prepsteps = element.prepsteps.split('|');
+    recipe.forEach((element) => {
+      let ingredientsList = element.ingredients.split('|');
+      let ingredients = [];
+
+      ingredientsList.forEach((element) => {
+        let ingredientObject = {};
+        ingredientObject.amount = element.split(',')[0];
+        ingredientObject.ingredient = element.split(',')[1];
+
+        ingredients.push(ingredientObject);
+      })
+
+      let prepstepsList = element.prepsteps.split('|');
+      let prepsteps = [];
+
+      prepstepsList.forEach((element) => {
+        let stepObject = {};
+        stepObject.step = element;
+
+        prepsteps.push(stepObject);
+      })
+
+      element.ingredients = ingredients;
+      element.prepsteps = prepsteps;
     })
 
     res.json(recipe);
@@ -88,8 +130,8 @@ app.get('/getRecipes/:id', async(req, res) => {
 })
 
 const port = 5000;
-const host = '192.168.178.26'; //Pi
-// const host = 'localhost';
+// const host = '192.168.178.26'; //Pi
+const host = 'localhost';
 
 
 app.listen(port, host, () => {
