@@ -90,7 +90,7 @@ class ShowRecipes extends React.Component {
     })
   }
 
-  onRecipeList = async (e) => {
+  onRecipeList = (e) => {
     this.setState({
       currentRecipe: '',
       site: 'overview',
@@ -107,7 +107,9 @@ class ShowRecipes extends React.Component {
             onRecipeList={this.onRecipeList}
             onRecipeDetailEdit={this.onRecipeDetailEdit}
             onDeleteRecipe={this.onDeleteRecipe}/>
-            : this.state.site === 'edit' ? <EditRecipes currentRecipe={this.state.currentRecipe}/>
+            : this.state.site === 'edit' ? <EditRecipes currentRecipe={this.state.currentRecipe}
+            onRecipeList={this.onRecipeList}
+            />
             : <RecipeCards recipes={this.state.allRecipes} onRecipeDetail={this.onRecipeDetail} onRecipeOverviewEdit={this.onRecipeOverviewEdit}/>
           }
         </div>

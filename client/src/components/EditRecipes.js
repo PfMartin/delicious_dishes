@@ -112,8 +112,7 @@ class EditRecipes extends React.Component {
         body: JSON.stringify(this.state)
       });
       if (response.status === 200) {
-        // console.log(this.state);
-        window.location = '/';
+        this.props.onRecipeList();
       }
 
       console.log(this.state);
@@ -238,7 +237,7 @@ class EditRecipes extends React.Component {
                   })
                 }
               </label>
-              <button className='btn'>Save Recipe</button>
+              <button className='btn'>Update Recipe</button>
             </form>
           </div>
         <div className='line'></div>

@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      site: 'addRecipe',
+      site: 'overview',
     };
 
     this.onHandleSite = this.onHandleSite.bind(this);
