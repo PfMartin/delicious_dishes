@@ -25,11 +25,6 @@ class EditRecipes extends React.Component {
 
   componentDidMount = async (e) => {
     await this.setState(this.props.currentRecipe[0]);
-    console.log('Current Recipe');
-    console.log(this.props.currentRecipe.id);
-    console.log('State');
-    console.log(this.state.id);
-
   }
 
   setValue = async (e) => {

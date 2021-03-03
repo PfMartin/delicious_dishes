@@ -31,7 +31,7 @@ app.post('/addRecipe', async(req, res) => {
     let { title, preptime, servings, category, source, link, ingredients, steps } = await req.body;
 
     const listOfIngredients = ingredients.map((e) => {
-      return (`${e.amount}, ${e.ingredient}`);
+      return (`${e.amount},${e.ingredient}`);
     });
     const listOfSteps = steps.map((e) => {
       return e.step
@@ -61,7 +61,7 @@ app.put('/updateRecipe/:id', async(req, res) => {
     let { title, preptime, servings, category, source, link, ingredients, prepsteps } = await req.body;
 
     const listOfIngredients = ingredients.map((e) => {
-      return (`${e.amount}, ${e.ingredient}`);
+      return (`${e.amount},${e.ingredient}`);
     });
     const listOfSteps = prepsteps.map((e) => {
       return e.step
