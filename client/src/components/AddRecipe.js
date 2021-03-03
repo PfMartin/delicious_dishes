@@ -119,6 +119,8 @@ class AddRecipe extends React.Component {
   render() {
     return(
       <Fragment>
+      <div className='paddingContainer'>
+        <h1>Add Recipe</h1>
           <div className='formContainer'>
             <form
               onSubmit={this.addRecipe}
@@ -235,6 +237,7 @@ class AddRecipe extends React.Component {
             </form>
           </div>
         <div className='line'></div>
+        </div>
       </Fragment>
     )
   }

@@ -20,6 +20,7 @@ class ShowRecipes extends React.Component {
     this.onRecipeList = this.onRecipeList.bind(this);
     this.onRecipeOverviewEdit = this.onRecipeOverviewEdit.bind(this);
     this.onRecipeDetailEdit = this.onRecipeDetailEdit.bind(this);
+    this.onDeleteRecipe = this.onDeleteRecipe.bind(this);
   }
 
 //Fetch recipes from the database when the component is mounted
@@ -62,6 +63,25 @@ class ShowRecipes extends React.Component {
     })
   }
 
+  onDeleteRecipe = async () => {
+    try {
+      const deleteRecipe = await fetch(`http://${this.server}:5000/deleteRecipe/${this.state.currentRecipe[0].id}`, {
+        method: 'DELETE'
+      })
+
+      const response = await fetch(`http://${this.server}:5000/getRecipes`);
+      const jsonData = await response.json();
+
+      this.setState({
+        allRecipes: jsonData,
+        site: 'overview'
+      })
+
+    } catch(err) {
+      console.error(err.message);
+    }
+  }
+
   onRecipeDetailEdit = (e) => {
     e.preventDefault();
 
@@ -85,7 +105,8 @@ class ShowRecipes extends React.Component {
           {
             this.state.site === 'detail' ? <RecipeDetail currentRecipe={this.state.currentRecipe}
             onRecipeList={this.onRecipeList}
-            onRecipeDetailEdit={this.onRecipeDetailEdit}/>
+            onRecipeDetailEdit={this.onRecipeDetailEdit}
+            onDeleteRecipe={this.onDeleteRecipe}/>
             : this.state.site === 'edit' ? <EditRecipes currentRecipe={this.state.currentRecipe}/>
             : <RecipeCards recipes={this.state.allRecipes} onRecipeDetail={this.onRecipeDetail} onRecipeOverviewEdit={this.onRecipeOverviewEdit}/>
           }

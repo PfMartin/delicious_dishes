@@ -9,13 +9,15 @@ class RecipeDetail extends React.Component {
       ingredients: [],
       prepsteps: [],
     };
+    this.server = 'localhost';
+    // this.server = '192.168.178.26';
   }
 
   componentDidMount = async () => {
     await this.setState(this.props.currentRecipe[0])
-    console.log(this.props.currentRecipe[0]);
-  }
 
+    console.log(this.state.id);
+  }
 
 
   render() {
@@ -32,12 +34,13 @@ class RecipeDetail extends React.Component {
             <div className='control'>
               <button
                 className='btn'
+                onClick={this.props.onRecipeDetailEdit}
                 >
-                <BiPencil
-                  onClick={this.props.onRecipeDetailEdit}/>
+                <BiPencil />
               </button>
               <button
                 className='btn'
+                onClick={this.props.onDeleteRecipe}
                 >
                 <BiTrash />
               </button>

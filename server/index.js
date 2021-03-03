@@ -8,6 +8,8 @@ const database = require('./db.js');
 const addRecipe = database.addRecipe;
 const getRecipes = database.getRecipes;
 const getRecipe = database.getRecipe;
+const updateRecipe = database.updateRecipe;
+const deleteRecipe = database.deleteRecipe;
 
 //Middleware
 app.use(cors());
@@ -26,7 +28,7 @@ app.get('/', async(req, res) => {
 
 app.post('/addRecipe', async(req, res) => {
   try {
-    let { title, prepTime, servings, category, source, link, ingredients, steps } = await req.body;
+    let { title, preptime, servings, category, source, link, ingredients, steps } = await req.body;
 
     const listOfIngredients = ingredients.map((e) => {
       return (`${e.amount}, ${e.ingredient}`);
@@ -39,14 +41,58 @@ app.post('/addRecipe', async(req, res) => {
     ingredients = listOfIngredients.join('|');
 
 
-    await addRecipe(title, prepTime, servings, category, source, link, ingredients, prepSteps);
+    await addRecipe(title, preptime, servings, category, source, link, ingredients, prepSteps);
 
-    console.log(title, prepTime, servings, category, source, link, ingredients, steps);
+    console.log(title, preptime, servings, category, source, link, ingredients, steps);
 
     res.send('Success');
 
     console.log(`Website has been added: ${req.body}`);
 
+  } catch(err) {
+    console.error(err.message);
+  }
+})
+
+app.put('/updateRecipe/:id', async(req, res) => {
+  try {
+    const { id } = req.params;
+
+    let { title, preptime, servings, category, source, link, ingredients, prepsteps } = await req.body;
+
+    const listOfIngredients = ingredients.map((e) => {
+      return (`${e.amount}, ${e.ingredient}`);
+    });
+    const listOfSteps = prepsteps.map((e) => {
+      return e.step
+    })
+
+    prepsteps = listOfSteps.join('|');
+    ingredients = listOfIngredients.join('|');
+
+
+    await updateRecipe(id, title, preptime, servings, category, source, link, ingredients, prepsteps);
+
+    // console.log(title, preptime, servings, category, source, link, ingredients, prepsteps);
+
+    res.send('Success');
+
+    console.log(`Website has been added: ${req.body}`);
+
+  } catch(err) {
+    console.error(err.message);
+  }
+})
+
+app.delete('/deleteRecipe/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    await deleteRecipe(id);
+
+    res.json('Recipe deleted');
+
+    console.log('Deleted');
   } catch(err) {
     console.error(err.message);
   }

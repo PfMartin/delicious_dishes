@@ -112,7 +112,7 @@ class EditRecipes extends React.Component {
     e.preventDefault();
     try {
       const response = await fetch(`http://${this.server}:5000/updateRecipe/${this.state.id}`, {
-        method: 'POST',
+        method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(this.state)
       });
