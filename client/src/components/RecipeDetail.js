@@ -23,7 +23,7 @@ class RecipeDetail extends React.Component {
   render() {
     return(
         <Fragment>
-          <header className='detail'>
+          <div className='detail'>
             <div className='back'>
               <button
                 className='btn'
@@ -45,7 +45,7 @@ class RecipeDetail extends React.Component {
                 <BiTrash />
               </button>
             </div>
-          </header>
+          </div>
           <body className='bodyDetail'>
             <ul className='meta'>
               <h1>{this.state.title}</h1>

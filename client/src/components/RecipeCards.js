@@ -7,10 +7,6 @@ class RecipeCards extends React.Component {
     this.state = {}
   }
 
-  componentDidMount = (e) => {
-    console.log(this.props.recipes);
-  }
-
   render() {
     return (
       <Fragment>

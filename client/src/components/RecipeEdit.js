@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
-import { BiPlus, BiTrash } from 'react-icons/bi';
+import { BiPlus, BiPencil, BiArrowBack, BiTrash } from 'react-icons/bi';
 
-class EditRecipes extends React.Component {
+class RecipeEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -124,6 +124,23 @@ class EditRecipes extends React.Component {
   render() {
     return(
       <Fragment>
+        <div className='detail'>
+          <div className='back'>
+            <button
+              className='btn'
+              onClick={this.props.onRecipeDetailBack}
+              ><BiArrowBack />
+            </button>
+          </div>
+          <div className='control'>
+            <button
+              className='btn'
+              onClick={this.props.onDeleteRecipe}
+              >
+              <BiTrash />
+            </button>
+          </div>
+        </div>
         <h1>Edit Recipe</h1>
           <div className='formContainer'>
             <form
@@ -246,4 +263,4 @@ class EditRecipes extends React.Component {
   }
 }
 
-export default EditRecipes;
+export default RecipeEdit;

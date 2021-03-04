@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 
 import RecipeDetail from './RecipeDetail.js';
 import RecipeCards from './RecipeCards.js';
-import EditRecipes from './EditRecipes.js';
+import RecipeEdit from './RecipeEdit.js';
 
 class ShowRecipes extends React.Component {
   constructor(props) {
@@ -21,6 +21,7 @@ class ShowRecipes extends React.Component {
     this.onRecipeOverviewEdit = this.onRecipeOverviewEdit.bind(this);
     this.onRecipeDetailEdit = this.onRecipeDetailEdit.bind(this);
     this.onDeleteRecipe = this.onDeleteRecipe.bind(this);
+    this.onRecipeDetailBack = this.onRecipeDetailBack.bind(this);
   }
 
 //Fetch recipes from the database when the component is mounted
@@ -97,6 +98,12 @@ class ShowRecipes extends React.Component {
     })
   }
 
+  onRecipeDetailBack = (e) => {
+    this.setState({
+      site: 'detail'
+    })
+  }
+
   render() {
 
     return(
@@ -107,8 +114,10 @@ class ShowRecipes extends React.Component {
             onRecipeList={this.onRecipeList}
             onRecipeDetailEdit={this.onRecipeDetailEdit}
             onDeleteRecipe={this.onDeleteRecipe}/>
-            : this.state.site === 'edit' ? <EditRecipes currentRecipe={this.state.currentRecipe}
+            : this.state.site === 'edit' ? <RecipeEdit currentRecipe={this.state.currentRecipe}
             onRecipeList={this.onRecipeList}
+            onRecipeDetailBack={this.onRecipeDetailBack}
+            onDeleteRecipe={this.onDeleteRecipe}
             />
             : <RecipeCards recipes={this.state.allRecipes} onRecipeDetail={this.onRecipeDetail} onRecipeOverviewEdit={this.onRecipeOverviewEdit}/>
           }
