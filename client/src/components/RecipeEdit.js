@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { BiPlus, BiPencil, BiArrowBack, BiTrash } from 'react-icons/bi';
+import { BiPlus, BiArrowBack, BiTrash } from 'react-icons/bi';
 
 class RecipeEdit extends React.Component {
   constructor(props) {
@@ -19,8 +19,8 @@ class RecipeEdit extends React.Component {
       ],
     }
 
-    this.server = 'localhost';
-    // this.server = '192.168.178.26'; //Pi
+    // this.server = 'localhost';
+    this.server = '192.168.178.26'; //Pi
   }
 
   componentDidMount = async (e) => {
