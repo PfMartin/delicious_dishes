@@ -23,8 +23,8 @@ class RecipeCards extends React.Component {
               >
                 <ul>
                   <h3>{element.title}</h3>
-                  <li>Category: {element.category}</li>
-                  <li>Preparation Time: {element.preptime} min</li>
+                  <li>{element.category}</li>
+                  <li>{element.preptime} min</li>
                   <li>Servings: {element.servings}</li>
                   Source:&nbsp;
                   <a href={element.link}> {element.source}</a>

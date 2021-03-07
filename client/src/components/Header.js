@@ -24,20 +24,23 @@ class SearchBar extends React.Component {
   }
 
   render() {
+
     return(
       <Fragment>
         <div className='header'>
           <div className='logo'>Image</div>
           <ul className='navBar'>
             <li
+              className={this.props.site === 'overview' ? 'active' : 'passive'}
               name='addRecipe'
               onClick={this.props.onHandleSite}
-              >Add Recipe
+              >Add
             </li>
             <li
+              className={this.props.site === 'overview' ? 'passive' : 'active'}
               name='showRecipes'
               onClick={this.props.onHandleSite}
-              >Show Recipes
+              >Recipes
             </li>
           </ul>
           <form >

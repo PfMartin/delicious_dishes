@@ -27,7 +27,7 @@ class App extends React.Component {
 
     return(
       <Fragment>
-        <Header onHandleSite={this.onHandleSite}/>
+        <Header onHandleSite={this.onHandleSite} site={this.state.site}/>
         {this.state.site === 'addRecipe' ? <AddRecipe /> : <ShowRecipes />}
         <Footer />
       </Fragment>

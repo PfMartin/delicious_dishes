@@ -10,6 +10,8 @@ app.use(express.static('client/build'));
 // });
 
 const port = process.env.PORT || 3000;
-const host = '192.168.178.26';
+const host = '192.168.178.24';
 
-app.listen(port, host);
+app.listen(port, host, () => {
+  console.log(`Server listens on ${host}:${port}`);
+});

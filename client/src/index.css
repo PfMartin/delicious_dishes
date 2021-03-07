@@ -108,11 +108,20 @@ button:hover {
 }
 
 /* Header */
+.active {
+  background: var(--accentDark);
+  color: red;
+}
+
+.passive {
+  background: var(--accent);
+}
+
 .header {
   margin: auto;
   padding: 1rem 0;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 0.5fr 1fr 1fr;
   text-align: center;
 }
 
@@ -131,7 +140,7 @@ button:hover {
   background: var(--accent);
   color: var(--white);
   border-radius: 3px;
-  width: 150px;
+  width: 80px;
 }
 
 .navBar li:hover {
@@ -145,7 +154,7 @@ button:hover {
 
 .header form input {
   margin-right: 2px;
-  width: 100px;
+  width: 80px;
   padding: 0.3rem;
 }
 
@@ -272,14 +281,15 @@ button:hover {
 /* RecipeCards */
 .cardContainer {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 5px;
   grid-row-gap: 5px;
 }
 
 .recipeCard {
-  padding: 1rem;
+  padding: 0.5rem;
   border: 1px var(--accent) solid;
+  height: 150px;
 }
 
 .recipeCard:hover {
