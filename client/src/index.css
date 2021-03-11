@@ -286,6 +286,15 @@ button:hover {
   grid-row-gap: 5px;
 }
 
+.categoryHeader {
+  margin: 0.5rem 0;
+  border-bottom: var(--accent) 2px solid;
+}
+
+.categoryHeader:hover {
+  cursor: pointer;
+}
+
 .recipeCard {
   padding: 0.5rem;
   border: 1px var(--accent) solid;

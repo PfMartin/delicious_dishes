@@ -10,7 +10,7 @@ class RecipeDetail extends React.Component {
       prepsteps: [],
     };
     // this.server = 'localhost';
-    this.server = '192.168.178.26';
+    this.server = 'localhost';
   }
 
   componentDidMount = async () => {

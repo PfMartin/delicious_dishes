@@ -20,7 +20,7 @@ class RecipeEdit extends React.Component {
     }
 
     // this.server = 'localhost';
-    this.server = '192.168.178.26'; //Pi
+    this.server = 'localhost'; //Pi
   }
 
   componentDidMount = async (e) => {

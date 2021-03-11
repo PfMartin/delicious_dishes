@@ -1,40 +1,92 @@
-import React, { Fragment } from 'react';
-// import { BiPencil } from 'react-icons/bi';
+import React from 'react';
+import { BiCaretUp, BiCaretDown } from 'react-icons/bi';
+import CategoryContainer from './CategoryContainer.js';
+
 
 class RecipeCards extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      main: true,
+      breakfast: true,
+      dessert: true,
+      drinks: true,
+      basics: true,
+    }
+  }
+
+  onHideCategory = async (e) => {
+    e.preventDefault();
+
+    const category = e.currentTarget.getAttribute('name');
+
+
+    await this.setState({
+      [category]: !this.state[category]
+    })
   }
 
   render() {
     return (
-      <Fragment>
-        <div className='cardContainer'>
+      <>
+        <h2
+          class='categoryHeader'
+          name='main'
+          onClick={this.onHideCategory}
+        >Main</h2>
+        <BiCaretUp />
         {
-          //Map through the list of recipes
-          this.props.recipes.map((element) => {
-            return(
-              <div
-              className='recipeCard'
-              key={element.id}
-              id={element.id}
-              onClick={this.props.onRecipeDetail}
-              >
-                <ul>
-                  <h3>{element.title}</h3>
-                  <li>{element.category}</li>
-                  <li>{element.preptime} min</li>
-                  <li>Servings: {element.servings}</li>
-                  Source:&nbsp;
-                  <a href={element.link}> {element.source}</a>
-                </ul>
-              </div>
-            )
-          })
+          this.state.main === true ?
+          <CategoryContainer
+            recipes={this.props.recipes}
+            category='main' onRecipeDetail={this.props.onRecipeDetail}
+          /> : ''
         }
-        </div>
-      </Fragment>
+        <h2
+          class='categoryHeader'
+          name='breakfast'
+          onClick={this.onHideCategory}
+        >Breakfast</h2>
+        { this.state.breakfast === true ?
+          <CategoryContainer
+          headline='Breakfast' recipes={this.props.recipes} category='breakfast' onRecipeDetail={this.props.onRecipeDetail}
+          /> : ''
+        }
+        <h2
+          class='categoryHeader'
+          name='dessert'
+          onClick={this.onHideCategory}
+        >Dessert</h2>
+        {
+          this.state.dessert === true ?
+          <CategoryContainer
+          headline='Dessert' recipes={this.props.recipes} category='dessert' onRecipeDetail={this.props.onRecipeDetail}
+          /> : ''
+        }
+        <h2
+          class='categoryHeader'
+          name='drinks'
+          onClick={this.onHideCategory}
+        >Drinks</h2>
+        {
+          this.state.drinks === true ?
+          <CategoryContainer
+            headline='Drinks' recipes={this.props.recipes} category='drinks' onRecipeDetail={this.props.onRecipeDetail}
+          /> : ''
+        }
+        <h2
+          class='categoryHeader'
+          name='basics'
+          onClick={this.onHideCategory}
+        >Basics</h2>
+        {
+          this.state.basics === true ?
+          <CategoryContainer
+            headline='Basics'
+            recipes={this.props.recipes} category='basics' onRecipeDetail={this.props.onRecipeDetail}
+          /> : ''
+        }
+      </>
     )
   }
 }
