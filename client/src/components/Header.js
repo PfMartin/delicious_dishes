@@ -28,7 +28,7 @@ class SearchBar extends React.Component {
     return(
       <Fragment>
         <div className='header'>
-          <div className='logo'>Image</div>
+          <div className='logo'>Logo</div>
           <ul className='navBar'>
             <li
               className={this.props.site === 'overview' ? 'active' : 'passive'}

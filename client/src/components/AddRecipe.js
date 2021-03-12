@@ -19,8 +19,8 @@ class AddRecipe extends React.Component {
       ],
     }
 
-    // this.server = 'localhost';
-    this.server = 'localhost'; //Pi
+    // this.server = '192.168.178.26';
+    this.server = '192.168.178.26'; //Pi
   }
 
   setValue = async (e) => {

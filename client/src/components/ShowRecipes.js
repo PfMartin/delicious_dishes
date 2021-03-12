@@ -13,8 +13,8 @@ class ShowRecipes extends React.Component {
       site: 'overview',
     };
 
-    // this.server = 'localhost';
-    this.server = 'localhost'; // Pi
+    // this.server = '192.168.178.26';
+    this.server = '192.168.178.26'; // Pi
 
     this.onRecipeDetail = this.onRecipeDetail.bind(this);
     this.onRecipeList = this.onRecipeList.bind(this);
