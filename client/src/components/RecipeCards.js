@@ -15,13 +15,11 @@ class RecipeCards extends React.Component {
     }
   }
 
-  onHideCategory = async (e) => {
+  onHideCategory = (e) => {
     e.preventDefault();
 
     const category = e.currentTarget.getAttribute('name');
-
-
-    await this.setState({
+    this.setState({
       [category]: !this.state[category]
     })
   }
@@ -33,8 +31,8 @@ class RecipeCards extends React.Component {
           class='categoryHeader'
           name='main'
           onClick={this.onHideCategory}
-        >Main</h2>
-        <BiCaretUp />
+        >Main {this.state.main === true ? <BiCaretUp style={{float: 'right'}}/> : <BiCaretDown style={{float: 'right'}}/>}</h2>
+
         {
           this.state.main === true ?
           <CategoryContainer
@@ -46,7 +44,7 @@ class RecipeCards extends React.Component {
           class='categoryHeader'
           name='breakfast'
           onClick={this.onHideCategory}
-        >Breakfast</h2>
+        >Breakfast {this.state.breakfast === true ? <BiCaretUp style={{float: 'right'}}/> : <BiCaretDown style={{float: 'right'}}/>}</h2>
         { this.state.breakfast === true ?
           <CategoryContainer
           headline='Breakfast' recipes={this.props.recipes} category='breakfast' onRecipeDetail={this.props.onRecipeDetail}
@@ -56,7 +54,7 @@ class RecipeCards extends React.Component {
           class='categoryHeader'
           name='dessert'
           onClick={this.onHideCategory}
-        >Dessert</h2>
+        >Dessert {this.state.dessert === true ? <BiCaretUp style={{float: 'right'}}/> : <BiCaretDown style={{float: 'right'}}/>}</h2>
         {
           this.state.dessert === true ?
           <CategoryContainer
@@ -67,7 +65,7 @@ class RecipeCards extends React.Component {
           class='categoryHeader'
           name='drinks'
           onClick={this.onHideCategory}
-        >Drinks</h2>
+        >Drinks {this.state.drinks === true ? <BiCaretUp style={{float: 'right'}}/> : <BiCaretDown style={{float: 'right'}}/>}</h2>
         {
           this.state.drinks === true ?
           <CategoryContainer
@@ -78,7 +76,7 @@ class RecipeCards extends React.Component {
           class='categoryHeader'
           name='basics'
           onClick={this.onHideCategory}
-        >Basics</h2>
+        >Basics {this.state.basics === true ? <BiCaretUp style={{float: 'right'}}/> : <BiCaretDown style={{float: 'right'}}/>}</h2>
         {
           this.state.basics === true ?
           <CategoryContainer

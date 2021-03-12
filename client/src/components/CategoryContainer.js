@@ -1,4 +1,6 @@
 import React from 'react';
+import { BiTimeFive, BiUser } from 'react-icons/bi';
+
 
 class CategoryContainer extends React.Component {
   constructor(props) {
@@ -22,10 +24,9 @@ class CategoryContainer extends React.Component {
                 <ul>
                   <h3>{element.title}</h3>
                   <li>{element.category}</li>
-                  <li>{element.preptime} min</li>
-                  <li>Servings: {element.servings}</li>
-                  Source:&nbsp;
-                  <a href={element.link}> {element.source}</a>
+                  <li><BiTimeFive /> {element.preptime} min</li>
+                  <li><BiUser /> {element.servings}</li>
+                  <li>by {element.source}</li>
                 </ul>
               </div>
             )
