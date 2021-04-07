@@ -176,8 +176,8 @@ app.get('/getRecipes/:id', async(req, res) => {
 })
 
 const port = 5000;
-const host = 'localhost'; //Pi
-// const host = 'localhost';
+const host = '192.168.178.26'; //Pi
+// const host = '192.168.178.26';
 
 
 app.listen(port, host, () => {

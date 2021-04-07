@@ -140,7 +140,7 @@ button:hover {
   background: var(--accent);
   color: var(--white);
   border-radius: 3px;
-  width: 80px;
+  min-width: 80px;
 }
 
 .navBar li:hover {
@@ -285,6 +285,37 @@ button:hover {
   grid-column-gap: 5px;
   grid-row-gap: 5px;
 }
+
+@media screen and (min-width: 520px) {
+  .cardContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .cardContainer {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (min-width: 988px) {
+  .cardContainer {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .cardContainer {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .cardContainer {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
+
 
 .categoryHeader {
   margin: 0.5rem 0;
